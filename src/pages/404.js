@@ -1,8 +1,9 @@
 import React from "react"
-import Layout from "components/layout"
+import { Redirect } from '@reach/router'
+// import Layout from "components/layout"
 
 export default () => (
-    <Layout titleText="404">
-    ERROR
-    </Layout>
+    <Redirect to="/" />
+    // <Layout titleText="404">
+    // </Layout>
 )
