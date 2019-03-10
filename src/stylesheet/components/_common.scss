@@ -29,6 +29,9 @@ $p_tablet: 35px;
         transform-origin: center center;
         background: rgb(10, 10, 10);
         background-image: linear-gradient(90deg, #000 10%, #333 100%);
+        body:not(.onhover) & {
+            background-image: linear-gradient(180deg, #000 10%, #1f1f1f 100%);
+        }
     }
     .label{
         font-family: 'Acumin Pro', Arial, Helvetica, sans-serif;
@@ -53,15 +56,19 @@ $p_tablet: 35px;
         color: #222;
         font-size: 60px;
         padding: 0px;
-        padding-top: 50px;
+        padding-top: 75px;
         @include respond-to(tablet){
             font-size: 50px;
-            padding-top: 40px;
+            padding-top: 50px;
         }
         @include respond-to(mobile){
             font-size: 40px;
+            padding-top: 40px;
         }
         & > p{
+            width: 100%;
+            cursor: default;
+
             &:first-child{
                 margin-top: 0px;
             }
@@ -69,10 +76,16 @@ $p_tablet: 35px;
                 margin-bottom: 0px;
             }
             & > a {
+                cursor: pointer;
+                max-width: 100%;
                 // text-decoration: none;
                 color: #222;
                 @include transition(color .25s);
                 white-space: pre-wrap;
+                word-wrap: break-word;
+                body.onhover & {
+                    text-decoration: none;
+                }
                 body.onhover &:hover {
                     color: #FFF;
                 }
