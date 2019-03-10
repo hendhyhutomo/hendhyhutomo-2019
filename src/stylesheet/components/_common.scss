@@ -1,3 +1,21 @@
-body{
-    border: solid red;
+body {
+    background: #111;
+}
+
+#Container {
+    min-height: 100vh;
+    & > #Background{
+        z-index: -1;
+        $dimension: 150vmax;
+        position: fixed;
+        width: $dimension;
+        height: $dimension;
+        top: 50%;
+        left: 50%;
+        margin-left: -$dimension / 2;
+        margin-top: -$dimension / 2;
+        transform-origin: center center;
+        background: rgb(10, 10, 10);
+        background-image: linear-gradient(90deg, #333 0%, #000 90%);
+    }
 }
