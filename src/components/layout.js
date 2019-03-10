@@ -15,27 +15,28 @@ export default class Layout extends React.Component {
 						site {
 							siteMetadata {
 								title
+								siteUrl
 							}
 						}
 					}
 				`}
 				render={(data) => {
+					const webname = data.site.siteMetadata.title;
+					const siteurl = data.site.siteMetadata.siteUrl;
 					const seo = {
 						desc: '',
 						keywords: '',
 						image: '',
-						url: 'https://gemasemesta.co'
+						url: siteurl
 					};
-					const webname = data.site.siteMetadata.title;
 					return (
 						<div>
 							<Helmet>
 								<title>{props.titleText ? `${props.titleText} | ${webname}` : webname}</title>
 								<meta name="description" content={seo.desc} />
-								<meta name="image" content={seo.image} />
 								<meta name="keywords" content={seo.keywords} />
+								{seo.image && <meta name="image" content={seo.image} />}
 								{seo.url && <meta property="og:url" content={seo.url} />}
-
 								{props.titleText ? (
 									<meta property="og:title" content={`${props.titleText} | ${webname}`} />
 								) : (
@@ -54,7 +55,6 @@ export default class Layout extends React.Component {
 								{seo.image && <meta name="twitter:image" content={seo.image} />}
 							</Helmet>
 							<div>{data.site.siteMetadata.title}</div>
-							<Header headerText={props.headerText} />
 							{props.children}
 						</div>
 					);

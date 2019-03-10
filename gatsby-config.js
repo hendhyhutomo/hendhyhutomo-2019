@@ -1,7 +1,7 @@
 module.exports = {
     siteMetadata: {
-        title: `Gatsby Starter`,
-        siteUrl: `https://gatsbyv2.netlify.com`,
+        title: `Coming Soon | Hendhy Hutomo `,
+        siteUrl: `https://hendhyhutomo.com`,
     },
     plugins: [{
             resolve: 'gatsby-source-filesystem',
@@ -12,11 +12,11 @@ module.exports = {
         }, {
             resolve: `gatsby-plugin-manifest`,
             options: {
-                name: "Gatsby Starter",
-                short_name: "gatsbyStarter",
+                name: "Hendhy Hutomo",
+                short_name: "hendhyhutomo",
                 start_url: "/",
-                background_color: "#6b37bf",
-                theme_color: "#6b37bf",
+                background_color: "#222222",
+                theme_color: "#222222",
                 display: "standalone",
                 icon: "src/images/icon/icon.png",
             },
