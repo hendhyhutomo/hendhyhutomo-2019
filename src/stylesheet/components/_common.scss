@@ -1,9 +1,21 @@
 body {
     background: #111;
 }
+* {
+    box-sizing: border-box;
+}
 
+$p_mobile: 25px;
+$p_tablet: 35px;
 #Container {
     min-height: 100vh;
+    padding: 50px;
+    @include respond-to(tablet){
+        padding: $p_tablet;
+    }
+    @include respond-to(mobile){
+        padding: $p_mobile;
+    }
     & > #Background{
         z-index: -1;
         $dimension: 150vmax;
@@ -16,6 +28,55 @@ body {
         margin-top: -$dimension / 2;
         transform-origin: center center;
         background: rgb(10, 10, 10);
-        background-image: linear-gradient(90deg, #333 0%, #000 90%);
+        background-image: linear-gradient(90deg, #000 10%, #333 100%);
+    }
+    .label{
+        font-family: 'Acumin Pro', Arial, Helvetica, sans-serif;
+        color: white;
+        font-size: 14px;
+        position: fixed;
+        top: 50px;
+        left: 50px;
+        @include respond-to(tablet){
+            top: $p_tablet;
+            left: $p_tablet;
+            font-size: 12px;
+        }
+        @include respond-to(mobile){
+            top: $p_mobile;
+            left: $p_mobile;
+        }
+    }
+    .content{
+        font-family: 'AktivGrotesk', Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        color: #222;
+        font-size: 60px;
+        padding: 0px;
+        padding-top: 50px;
+        @include respond-to(tablet){
+            font-size: 50px;
+            padding-top: 40px;
+        }
+        @include respond-to(mobile){
+            font-size: 40px;
+        }
+        & > p{
+            &:first-child{
+                margin-top: 0px;
+            }
+            &:last-child{
+                margin-bottom: 0px;
+            }
+            & > a {
+                // text-decoration: none;
+                color: #222;
+                @include transition(color .25s);
+                white-space: pre-wrap;
+                body.onhover &:hover {
+                    color: #FFF;
+                }
+            }
+        }
     }
 }

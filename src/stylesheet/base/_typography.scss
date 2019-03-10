@@ -34,14 +34,222 @@ $line-height-body-mobile: 18px;
 // ==========================================================================
 
 
-// NORMAL
-// @font-face {
-//     font-family: 'UniversNextPro';
-//     src: url('../fonts/UniversNextPro-UltLt.eot');
-//     src: url('../fonts/UniversNextPro-UltLt.woff2') format('woff2'),
-//         url('../fonts/UniversNextPro-UltLt.woff') format('woff'),
-//         url('../fonts/UniversNextPro-UltLt.ttf') format('truetype'),
-//         url('../fonts/UniversNextPro-UltLt.eot?#iefix') format('embedded-opentype');
-//     font-weight: 100;
-//     font-style: normal;
-// }
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../fonts/AcuminPro-BoldItalic.eot');
+    src: url('../fonts/AcuminPro-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AcuminPro-BoldItalic.woff2') format('woff2'),
+        url('../fonts/AcuminPro-BoldItalic.woff') format('woff'),
+        url('../fonts/AcuminPro-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../fonts/AcuminPro-Regular.eot');
+    src: url('../fonts/AcuminPro-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AcuminPro-Regular.woff2') format('woff2'),
+        url('../fonts/AcuminPro-Regular.woff') format('woff'),
+        url('../fonts/AcuminPro-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AktivGrotesk';
+    src: url('../fonts/AktivGrotesk-BlackItalic.eot');
+    src: url('../fonts/AktivGrotesk-BlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AktivGrotesk-BlackItalic.woff2') format('woff2'),
+        url('../fonts/AktivGrotesk-BlackItalic.woff') format('woff'),
+        url('../fonts/AktivGrotesk-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'AktivGrotesk';
+    src: url('../fonts/AktivGrotesk-MediumItalic.eot');
+    src: url('../fonts/AktivGrotesk-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AktivGrotesk-MediumItalic.woff2') format('woff2'),
+        url('../fonts/AktivGrotesk-MediumItalic.woff') format('woff'),
+        url('../fonts/AktivGrotesk-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'AktivGrotesk';
+    src: url('../fonts/AktivGrotesk-BoldItalic.eot');
+    src: url('../fonts/AktivGrotesk-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AktivGrotesk-BoldItalic.woff2') format('woff2'),
+        url('../fonts/AktivGrotesk-BoldItalic.woff') format('woff'),
+        url('../fonts/AktivGrotesk-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'AktivGrotesk';
+    src: url('../fonts/AktivGrotesk-Italic.eot');
+    src: url('../fonts/AktivGrotesk-Italic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AktivGrotesk-Italic.woff2') format('woff2'),
+        url('../fonts/AktivGrotesk-Italic.woff') format('woff'),
+        url('../fonts/AktivGrotesk-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'AktivGrotesk';
+    src: url('../fonts/AktivGrotesk-Medium.eot');
+    src: url('../fonts/AktivGrotesk-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AktivGrotesk-Medium.woff2') format('woff2'),
+        url('../fonts/AktivGrotesk-Medium.woff') format('woff'),
+        url('../fonts/AktivGrotesk-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AktivGrotesk-XBold';
+    src: url('../fonts/AktivGrotesk-XBold.eot');
+    src: url('../fonts/AktivGrotesk-XBold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AktivGrotesk-XBold.woff2') format('woff2'),
+        url('../fonts/AktivGrotesk-XBold.woff') format('woff'),
+        url('../fonts/AktivGrotesk-XBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AktivGrotesk-XBoldItalic';
+    src: url('../fonts/AktivGrotesk-XBoldItalic.eot');
+    src: url('../fonts/AktivGrotesk-XBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AktivGrotesk-XBoldItalic.woff2') format('woff2'),
+        url('../fonts/AktivGrotesk-XBoldItalic.woff') format('woff'),
+        url('../fonts/AktivGrotesk-XBoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'AktivGrotesk';
+    src: url('../fonts/AktivGrotesk-Black.eot');
+    src: url('../fonts/AktivGrotesk-Black.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AktivGrotesk-Black.woff2') format('woff2'),
+        url('../fonts/AktivGrotesk-Black.woff') format('woff'),
+        url('../fonts/AktivGrotesk-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AktivGrotesk';
+    src: url('../fonts/AktivGrotesk-Regular.eot');
+    src: url('../fonts/AktivGrotesk-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AktivGrotesk-Regular.woff2') format('woff2'),
+        url('../fonts/AktivGrotesk-Regular.woff') format('woff'),
+        url('../fonts/AktivGrotesk-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AktivGrotesk';
+    src: url('../fonts/AktivGrotesk-Thin.eot');
+    src: url('../fonts/AktivGrotesk-Thin.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AktivGrotesk-Thin.woff2') format('woff2'),
+        url('../fonts/AktivGrotesk-Thin.woff') format('woff'),
+        url('../fonts/AktivGrotesk-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AktivGrotesk-HairlineItalic';
+    src: url('../fonts/AktivGrotesk-HairlineItalic.eot');
+    src: url('../fonts/AktivGrotesk-HairlineItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AktivGrotesk-HairlineItalic.woff2') format('woff2'),
+        url('../fonts/AktivGrotesk-HairlineItalic.woff') format('woff'),
+        url('../fonts/AktivGrotesk-HairlineItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'AktivGrotesk';
+    src: url('../fonts/AktivGrotesk-Light.eot');
+    src: url('../fonts/AktivGrotesk-Light.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AktivGrotesk-Light.woff2') format('woff2'),
+        url('../fonts/AktivGrotesk-Light.woff') format('woff'),
+        url('../fonts/AktivGrotesk-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AktivGrotesk';
+    src: url('../fonts/AktivGrotesk-Bold.eot');
+    src: url('../fonts/AktivGrotesk-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AktivGrotesk-Bold.woff2') format('woff2'),
+        url('../fonts/AktivGrotesk-Bold.woff') format('woff'),
+        url('../fonts/AktivGrotesk-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AktivGrotesk';
+    src: url('../fonts/AktivGrotesk-ThinItalic.eot');
+    src: url('../fonts/AktivGrotesk-ThinItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AktivGrotesk-ThinItalic.woff2') format('woff2'),
+        url('../fonts/AktivGrotesk-ThinItalic.woff') format('woff'),
+        url('../fonts/AktivGrotesk-ThinItalic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'AktivGrotesk-Hairline';
+    src: url('../fonts/AktivGrotesk-Hairline.eot');
+    src: url('../fonts/AktivGrotesk-Hairline.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AktivGrotesk-Hairline.woff2') format('woff2'),
+        url('../fonts/AktivGrotesk-Hairline.woff') format('woff'),
+        url('../fonts/AktivGrotesk-Hairline.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../fonts/AcuminPro-Bold.eot');
+    src: url('../fonts/AcuminPro-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AcuminPro-Bold.woff2') format('woff2'),
+        url('../fonts/AcuminPro-Bold.woff') format('woff'),
+        url('../fonts/AcuminPro-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AktivGrotesk';
+    src: url('../fonts/AktivGrotesk-LightItalic.eot');
+    src: url('../fonts/AktivGrotesk-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AktivGrotesk-LightItalic.woff2') format('woff2'),
+        url('../fonts/AktivGrotesk-LightItalic.woff') format('woff'),
+        url('../fonts/AktivGrotesk-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../fonts/AcuminPro-Italic.eot');
+    src: url('../fonts/AcuminPro-Italic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AcuminPro-Italic.woff2') format('woff2'),
+        url('../fonts/AcuminPro-Italic.woff') format('woff'),
+        url('../fonts/AcuminPro-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}

@@ -1,22 +1,12 @@
 exports.onRouteUpdate = ({
     location
 }) => {
-    console.log('Route Updated', location.pathname)
-    if (location.pathname.includes("blog")) {
-        // document.body.classList.remove('preloading');
-    }
 }
 exports.onClientEntry = () => {
-    console.log("First Time Site is loaded")
-    document.body.classList.add('preloading');
+	if (!('ontouchstart' in document.documentElement)) {
+		document.body.classList.add('onhover');
+    }
 }
-exports.onPreRouteUpdate = ({
-    location
-}) => {
-    console.log("Preroute Update", location.pathname)
-    document.body.classList.add('preloading');
-}
-
 // DELAY SCROLL UPDATE
 
 const transitionDelay = 2000
