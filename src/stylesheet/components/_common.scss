@@ -41,7 +41,7 @@ $p_tablet: 35px;
         body:not(.onhover).hasgyro & {
             background-image: radial-gradient( #000 10%, #2D2D2D 40%);
         }
-        @include transition(opacity .5s, transform .1s);
+        @include transition(opacity .5s, transform .05s);
         body.loading & {
             opacity: 0;
         }
