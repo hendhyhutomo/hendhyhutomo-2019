@@ -1,10 +1,9 @@
 exports.onRouteUpdate = ({
     location
-}) => {
-}
+}) => {}
 exports.onClientEntry = () => {
-	if (!('ontouchstart' in document.documentElement)) {
-		document.body.classList.add('onhover');
+    if (!('ontouchstart' in document.documentElement)) {
+        document.body.classList.add('onhover');
     }
 }
 // DELAY SCROLL UPDATE

@@ -1,5 +1,11 @@
 body {
-    background: #111;
+    background: #202020;
+    &.loading{
+        pointer-events: none;
+    }
+    &:not(.onhover).hasgyro {
+        background: #2D2D2D;
+    }
 }
 * {
     box-sizing: border-box;
@@ -18,7 +24,7 @@ $p_tablet: 35px;
     }
     & > #Background{
         z-index: -1;
-        $dimension: 150vmax;
+        $dimension: 200vmax;
         position: fixed;
         width: $dimension;
         height: $dimension;
@@ -28,9 +34,16 @@ $p_tablet: 35px;
         margin-top: -$dimension / 2;
         transform-origin: center center;
         background: rgb(10, 10, 10);
-        background-image: linear-gradient(90deg, #000 10%, #333 100%);
-        body:not(.onhover) & {
-            background-image: linear-gradient(180deg, #000 10%, #1f1f1f 100%);
+        background-image: radial-gradient( #000 0%, #202020 50%);
+        body:not(.onhover):not(.hasgyro) & {
+            background-image: linear-gradient(180deg, #000 10%, #0F0F0F 100%);
+        }
+        body:not(.onhover).hasgyro & {
+            background-image: radial-gradient( #000 10%, #2D2D2D 40%);
+        }
+        @include transition(opacity .5s, transform .1s);
+        body.loading & {
+            opacity: 0;
         }
     }
     .label{
@@ -49,6 +62,10 @@ $p_tablet: 35px;
             top: $p_mobile;
             left: $p_mobile;
         }
+        @include transition(opacity .5s .2s);
+        body.loading & {
+            opacity: 0;
+        }
     }
     .content{
         font-family: 'AktivGrotesk', Arial, Helvetica, sans-serif;
@@ -64,6 +81,13 @@ $p_tablet: 35px;
         @include respond-to(mobile){
             font-size: 40px;
             padding-top: 40px;
+        }
+        @include transition(color .25s, opacity .5s .4s);
+        body:not(.onhover) & {
+            color: #333;
+        }
+        body.loading & {
+            opacity: 0;
         }
         & > p{
             width: 100%;
@@ -88,6 +112,9 @@ $p_tablet: 35px;
                 }
                 body.onhover &:hover {
                     color: #FFF;
+                }
+                body:not(.onhover) & {
+                    color: #333;
                 }
             }
         }
