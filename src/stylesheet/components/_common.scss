@@ -36,7 +36,7 @@ $p_tablet: 35px;
         background: rgb(10, 10, 10);
         background-image: radial-gradient( #000 0%, #202020 50%);
         body:not(.onhover):not(.hasgyro) & {
-            background-image: linear-gradient(180deg, #000 10%, #0F0F0F 100%);
+            background-image: linear-gradient(180deg, #000 10%, #101010 100%);
         }
         body:not(.onhover).hasgyro & {
             background-image: radial-gradient( #000 10%, #2D2D2D 40%);
