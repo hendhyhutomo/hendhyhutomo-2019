@@ -13,14 +13,21 @@ body {
 
 $p_mobile: 25px;
 $p_tablet: 35px;
+$p_desktop: 50px;
 #Container {
     min-height: 100vh;
-    padding: 50px;
+    padding: $p_desktop;
+    @include padding-safe-area($p_desktop);
+    @include padding-safe-bottom($p_desktop);
     @include respond-to(tablet){
         padding: $p_tablet;
+        @include padding-safe-area($p_tablet);
+        @include padding-safe-bottom($p_tablet);
     }
     @include respond-to(mobile){
         padding: $p_mobile;
+        @include padding-safe-area($p_mobile);
+        @include padding-safe-bottom($p_mobile);
     }
     & > #Background{
         z-index: -1;
@@ -39,7 +46,7 @@ $p_tablet: 35px;
             background-image: linear-gradient(180deg, #000 10%, #101010 100%);
         }
         body:not(.onhover).hasgyro & {
-            background-image: radial-gradient( #000 10%, #2D2D2D 40%);
+            background-image: radial-gradient( #000 10%, #2D2D2D 60%);
         }
         @include transition(opacity .5s, transform .05s);
         body.loading & {
@@ -51,16 +58,19 @@ $p_tablet: 35px;
         color: white;
         font-size: 14px;
         position: fixed;
-        top: 50px;
-        left: 50px;
+        top: $p_desktop;
+        left: $p_desktop;
+        @include left-safe($p_desktop);
         @include respond-to(tablet){
             top: $p_tablet;
             left: $p_tablet;
+            @include left-safe($p_tablet);
             font-size: 12px;
         }
         @include respond-to(mobile){
             top: $p_mobile;
             left: $p_mobile;
+            @include left-safe($p_mobile);
         }
         @include transition(opacity .5s .2s);
         body.loading & {
