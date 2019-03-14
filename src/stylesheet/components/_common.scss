@@ -72,7 +72,7 @@ $p_desktop: 50px;
             left: $p_mobile;
             @include left-safe($p_mobile);
         }
-        @include transition(opacity .5s .2s);
+        @include transition(opacity 1.25s .25s);
         body.loading & {
             opacity: 0;
         }
@@ -92,7 +92,7 @@ $p_desktop: 50px;
             font-size: 40px;
             padding-top: 40px;
         }
-        @include transition(color .25s, opacity .5s .4s);
+        @include transition(color .25s, opacity 1.25s .5s);
         body:not(.onhover) & {
             color: #333;
         }
