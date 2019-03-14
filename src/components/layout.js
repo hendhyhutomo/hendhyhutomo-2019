@@ -109,8 +109,8 @@ const ContainerFunction = {
 				document.body.classList.add('hasgyro');
 			}
 			let { gamma, beta } = event;
-			beta = beta - 30;
-			gamma = gamma + 60;
+			beta = beta - 15; // X
+			gamma = gamma + 45; // Y
 			// const radian = Math.atan2(beta, gamma);
 			// const deg = Math.floor((radian * 180 / Math.PI + 180) * 100) / 100;
 			// const transformRotate = ` rotate(${deg}deg) `;
