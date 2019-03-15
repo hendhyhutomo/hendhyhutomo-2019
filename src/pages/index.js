@@ -6,7 +6,7 @@ export default () => (
 		<div className="label">Website is currently under construction.</div>
 		<div className="content">
 			<p>
-				My name is Hendhy Hutomo, I am a digital creative based in Jakarta, Indonesia. I make websites, apps,
+				My name is Hendhy Hutomo,<wbr /> I&nbsp;am a digital creative based in Jakarta, Indonesia. I make websites, apps,
 				motion graphics & brand identities.
 			</p>
 			<p>

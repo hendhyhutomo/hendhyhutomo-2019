@@ -109,8 +109,7 @@ const ContainerFunction = {
 				document.body.classList.add('hasgyro');
 			}
 			let { gamma, beta } = event;
-			beta = beta - 15; // X
-			gamma = gamma + 45; // Y
+			// gamma = gamma; // Y
 			// const radian = Math.atan2(beta, gamma);
 			// const deg = Math.floor((radian * 180 / Math.PI + 180) * 100) / 100;
 			// const transformRotate = ` rotate(${deg}deg) `;
@@ -120,11 +119,23 @@ const ContainerFunction = {
 			let scale = 1 + 0.25 * (Math.floor(distance / MaxDistance * 10) / 10);
 			const transformScale = ` scale( ${scale}, ${scale}) `;
 
-			const drag = 0.5;
+			const drag = 0.75;
 			let translateX = - Math.floor((gamma) / 180 * drag * 100);
 			let translateY =  - Math.floor((beta) / 180 * drag * 100);
+
+			if(!window.matchMedia("(orientation: portrait)").matches){
+				translateX = - Math.floor((beta) / 180 * drag * 100);
+				if(window.orientation > 0){
+					translateY =  Math.floor((gamma) / 180 * drag * 100);
+				}
+				else{
+					translateY =  - Math.floor((gamma) / 180 * drag * 100);
+				}
+			}
+			translateX = translateX - 5;
+			translateY = translateY + 7.5;
 			const transformTranslate = ` translate( ${translateX}%, ${translateY}%) `;
-			console.log(`X: ${translateX} ${ Math.floor(gamma)} , Y: ${translateY} ${ Math.floor(beta)}`);
+			// console.log(`X: ${translateX} ${ Math.floor(gamma)} , Y: ${translateY} ${ Math.floor(beta)}, Orientation: ${window.matchMedia("(orientation: landscape)").matches} ${window.orientation}`);
 			document.querySelector('div#Container #Background').style.transform = transformScale + transformTranslate;
 		};
 

@@ -46,9 +46,9 @@ $p_desktop: 50px;
             background-image: linear-gradient(180deg, #000 10%, #101010 100%);
         }
         body:not(.onhover).hasgyro & {
-            background-image: radial-gradient( #000 10%, #2D2D2D 60%);
+            background-image: radial-gradient( #000 05%, #2D2D2D 40%);
         }
-        @include transition(opacity .5s, transform .05s);
+        @include transition(opacity .5s, transform .01s);
         body.loading & {
             opacity: 0;
         }
