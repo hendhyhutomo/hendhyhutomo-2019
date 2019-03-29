@@ -25,19 +25,24 @@ export default class ImagePlayground extends React.Component {
 	};
 	handleChangeColor = (event) => {
 		const target = 'bgColor';
+		let colorValue;
 		this.setState({ [target]: event.target.value }, () => {
 			IPfn.imagetrigger(this.state);
 		});
-		let colorCheck = /^[0-9A-F]{3,6}$/.test(event.target.value);
-		const target2 = 'bgColorError';
+		if(event.target.value) colorValue = (event.target.value).toString().toUpperCase();
+		let colorCheck3 = /^[0-9A-F]{3}$/.test(colorValue);
+		let colorCheck6 = /^[0-9A-F]{6}$/.test(colorValue);
+		const errorTarget = 'bgColorError';
+		let errorBool = false;
 		if (
 			event.target.value.length === 0 ||
-			(colorCheck && (event.target.value.length === 3 || event.target.value.length === 6))
+			((colorCheck3 || colorCheck6) && (event.target.value.length === 3 || event.target.value.length === 6))
 		) {
-			this.setState({ [target2]: false });
+			errorBool = false;
 		} else {
-			this.setState({ [target2]: true });
+			errorBool = true;
 		}
+		this.setState({ [errorTarget]: errorBool });
 	};
 	componentDidMount() {
 		IPfn.init();
@@ -157,12 +162,14 @@ const IPfn = {
 	imagetrigger: (data) => {
 		const imageDOM = document.querySelector('div#Image > img');
 		const colorinput = document.querySelector('.colorinput');
-		const { fit, positionX, positionY, bgColor } = data;
-		let colorCheck = /[0-9A-F]{3,6}$/i.test(bgColor);
+		let { fit, positionX, positionY, bgColor } = data;
+		if(bgColor)bgColor = (bgColor).toString().toUpperCase();
+		let colorCheck3 = /^[0-9A-F]{3}$/.test(bgColor);
+		let colorCheck6 = /^[0-9A-F]{6}$/.test(bgColor);
 
 		if (bgColor &&
 			(bgColor.length === 0 ||
-			(colorCheck && (bgColor.length === 3 || bgColor.length === 6)))
+			((colorCheck3 || colorCheck6) && (bgColor.length === 3 || bgColor.length === 6)))
 		) {
 			imageDOM.style.backgroundColor = '#' + bgColor;
 		} else {
