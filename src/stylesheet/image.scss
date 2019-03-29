@@ -49,13 +49,11 @@ div#ImageContainer {
                 display: block;
                 margin-bottom: 10px;
             }
-            & >.MuiFormControl-marginNormal-2{
-                margin: 0px;
-            }
             & .select{
                 min-width: 100px;;
             }
             & .colorinput{
+                margin: 0px !important;
                 &.disable{
                     opacity: 0.5;
                     pointer-events: none;
