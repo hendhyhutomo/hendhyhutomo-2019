@@ -535,13 +535,13 @@ $asset-base-path: '../';
 
 // SAFE AREA
 @mixin padding-safe-area($pl: 0px, $pr: 0px) {
-  // padding-left: calc(#{$pl} + max(12px, env(safe-area-inset-left)));
-  // padding-right: calc(#{$pr} + max(12px, env(safe-area-inset-right)));
+  @if $pr == 0px {
+    $pr: $pl;
+  }
+
 
   padding-left: calc(#{$pl} + env(safe-area-inset-left));
   padding-right: calc(#{$pr} + env(safe-area-inset-right));
-  // padding-left: max(#{$pl} , env(safe-area-inset-left));
-  // padding-right: max(#{$pr} , env(safe-area-inset-right));
 }
 
 @mixin padding-safe-top($pt: 0px) {
