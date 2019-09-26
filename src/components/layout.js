@@ -287,12 +287,12 @@ const ContainerFunction = {
     let translateX = ((_x - center.X) / center.X) * drag * 100;
     let translateY = ((_y - center.Y) / center.Y) * drag * 100;
     // console.log('height', translateY, max.h);
-    if (Math.abs(translateX) > max.w) {
-      translateX = Math.sign(translateX) * max.w;
-    }
-    if (Math.abs(translateY) > max.h) {
-      translateY = Math.sign(translateY) * max.h;
-    }
+    // if (Math.abs(translateX) > max.w) {
+    //   translateX = Math.sign(translateX) * max.w;
+    // }
+    // if (Math.abs(translateY) > max.h) {
+    //   translateY = Math.sign(translateY) * max.h;
+    // }
     const transformScale = ` scale( ${scale}, ${scale}) `;
     const transformTranslate = ` translate( ${translateX}%, ${translateY}%) `;
     document.querySelector('div#Container #Background').style.transform =

@@ -1,21 +1,58 @@
 import React from 'react';
 import Layout from 'components/layout';
+import portfolioData from '../json/data.json';
 
-export default () => (
-	<Layout>
-		<div className="label">Website is currently under construction.</div>
-		<div className="content">
-			<p>
-				My name is Hendhy Hutomo,<wbr /> I&nbsp;am a digital creative based in Jakarta, Indonesia. I make websites, apps,
-				motion graphics & brand identities.
-			</p>
-			<p>
-				Since 2015,  <wbr />I&nbsp;have contributed to: <wbr /><a href="https://maltstudio.com" target="_blank" rel="noopener noreferrer">MALT Studio</a>, <a href="https://herbamojo.id" target="_blank" rel="noopener noreferrer">Herbamojo</a>, Anomali, <a href="https://www.instagram.com/harapandjaya/" target="_blank" rel="noopener noreferrer">Harapan Djaya</a>, Curious People, <a href="https://levi.co.id/" target="_blank" rel="noopener noreferrer">Levi's Indonesia</a>, <a href="http://manual.co.id" target="_blank" rel="noopener noreferrer">Manual Jakarta</a>, <a href="http://cindyamelia.com" target="_blank" rel="noopener noreferrer">Cindy Amelia</a>, <a href="https://herbana.id" target="_blank" rel="noopener noreferrer">Herbana</a>, <a href="https://www.museummacan.org" target="_blank" rel="noopener noreferrer">Museum
-				MACAN</a>, <a href="https://thenextcitiesunveiled.manual.co.id/" target="_blank" rel="noopener noreferrer">The Next Cities Unveiled</a>, <a href="https://biko-group.com" target="_blank" rel="noopener noreferrer">BIKO group</a>, <a href="https://talentcap.com.my" target="_blank" rel="noopener noreferrer">Talent Cap</a>,  <a href="https://kayukayu.id" target="_blank" rel="noopener noreferrer">Kayu Kayu</a>, <a href="https://alpha.or.id" target="_blank" rel="noopener noreferrer">Alpha Indonesia</a> and&nbsp;many more&nbsp;—
-			</p>
-			<p>
-				Say hello, <wbr /><a href="mailto:hello@hendhyhutomo.com" target="_blank" rel="noopener noreferrer">hello@hendhyhutomo.com</a>.
-			</p>
-		</div>
-	</Layout>
-);
+export default () => {
+  console.log(portfolioData);
+  return (
+    <Layout>
+      <div className='label'>Website is currently under construction.</div>
+      <div className='content'>
+        <p>
+          My name is Hendhy Hutomo,
+          <wbr /> I&nbsp;am a digital creative based in Jakarta, Indonesia. I
+          make websites, apps, motion graphics & brand identities.
+        </p>
+        <p>
+          Since 2015, <wbr />
+          I&nbsp;have contributed to: <wbr />
+          {portfolioData.map((data, id) => {
+            let printout;
+            if (data.link === null) {
+              printout = (
+                <span key={id}>
+                  {' '}
+                  {data.name}
+                  {id !== portfolioData.length - 1 ? ',' : ''}
+                </span>
+              );
+            } else {
+              printout = (
+                <span key={id}>
+                  {' '}
+                  <a href={data.link} target='_blank' rel='noopener noreferrer'>
+                    {data.name}
+                  </a>
+                  {id !== portfolioData.length - 1 ? ',' : ''}
+                </span>
+              );
+            }
+            return printout;
+          })}{' '}
+          and&nbsp;many more&nbsp;—
+        </p>
+        <p>
+          Say hello, <wbr />
+          <a
+            href='mailto:hello@hendhyhutomo.com'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            hello@hendhyhutomo.com
+          </a>
+          .
+        </p>
+      </div>
+    </Layout>
+  );
+};

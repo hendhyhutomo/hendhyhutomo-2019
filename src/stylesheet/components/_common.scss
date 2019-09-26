@@ -34,14 +34,14 @@ $p_desktop: 50px;
     position: fixed;
     top: 50%;
     left: 50%;
-    $dimension: 300vmax;
+    $dimension: 200vmax;
     width: $dimension;
     height: $dimension;
     margin-left: -$dimension / 2;
     margin-top: -$dimension / 2;
     transform-origin: center center;
-    background: rgb(10, 10, 10);
-    background-image: radial-gradient(#000 0%, #202020 50%);
+    // background: #202020;
+    background-image: radial-gradient( rgba(0,0,0,1) 10%, rgba(0,0,0,0) 70%);
     @include transform(translate(0%, 0%) scale(1, 1));
     body:not(.onhover) & {
       @include transform(translate(0%, 0%) scale(1, 1));
@@ -52,7 +52,7 @@ $p_desktop: 50px;
       left: 0%;
       margin: 0px;
       background: #2d2d2d;
-      background-image: linear-gradient(200deg, #000 10%, #2d2d2d 75%);
+      background-image: linear-gradient(200deg, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 75%);
     }
     body:not(.onhover).hasgyro & {
       // background-image: radial-gradient(#000 05%, #2d2d2d 40%);
@@ -127,7 +127,7 @@ $p_desktop: 50px;
       &:last-child {
         margin-bottom: 0px;
       }
-      & > a {
+      & a {
         cursor: pointer;
         max-width: 100%;
         // text-decoration: none;
