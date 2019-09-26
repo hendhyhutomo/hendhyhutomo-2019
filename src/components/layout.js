@@ -85,8 +85,14 @@ export default class Layout extends React.Component {
 const ContainerFunction = {
   init: () => {
     ContainerFunction.resizeAdd();
-    ContainerFunction.mouseMoveAdd();
-    ContainerFunction.deviceMotion();
+
+    if (typeof window !== `undefined`) {
+      if (!('ontouchstart' in document.documentElement)) {
+        ContainerFunction.mouseMoveAdd();
+      } else {
+        ContainerFunction.scrollInit();
+      }
+    }
     setTimeout(() => {
       if (typeof document !== `undefined`) {
         document.body.classList.remove('loading');
@@ -123,7 +129,7 @@ const ContainerFunction = {
     }
   },
   deviceMotion: () => {
-    const listener = event => {
+    function listener(event) {
       if (typeof document !== `undefined`) {
         document.body.classList.add('hasgyro');
       }
@@ -156,10 +162,61 @@ const ContainerFunction = {
       // console.log(`X: ${translateX} ${ Math.floor(gamma)} , Y: ${translateY} ${ Math.floor(beta)}, Orientation: ${window.matchMedia("(orientation: landscape)").matches} ${window.orientation}`);
       document.querySelector('div#Container #Background').style.transform =
         transformScale + transformTranslate;
-    };
+    }
 
     if (typeof window !== `undefined`) {
-      window.addEventListener('deviceorientation', listener);
+      if (window.DeviceOrientationEvent) {
+        // gyro exist
+        document.body.classList.add('hasgyro');
+      }
+      window.addEventListener(
+        'deviceorientation',
+        event => {
+          alert('detect');
+          if (typeof document !== `undefined`) {
+            document.body.classList.add('hasgyro');
+          }
+          let { gamma, beta } = event;
+          // gamma = gamma; // Y
+          // const radian = Math.atan2(beta, gamma);
+          // const deg = Math.floor((radian * 180 / Math.PI + 180) * 100) / 100;
+          // const transformRotate = ` rotate(${deg}deg) `;
+
+          const MaxDistance = Math.sqrt(45 * 45 + 45 * 45);
+          let distance = Math.sqrt(gamma * gamma + beta * beta);
+          let scale =
+            1 + 0.25 * (Math.floor((distance / MaxDistance) * 10) / 10);
+          const transformScale = ` scale( ${scale}, ${scale}) `;
+
+          const drag = 0.75;
+          let translateX = -Math.floor((gamma / 180) * drag * 100);
+          let translateY = -Math.floor((beta / 180) * drag * 100);
+
+          if (!window.matchMedia('(orientation: portrait)').matches) {
+            translateX = -Math.floor((beta / 180) * drag * 100);
+            if (window.orientation > 0) {
+              translateY = Math.floor((gamma / 180) * drag * 100);
+            } else {
+              translateY = -Math.floor((gamma / 180) * drag * 100);
+            }
+          }
+          translateX = translateX - 5;
+          translateY = translateY + 7.5;
+          const transformTranslate = ` translate( ${translateX}%, ${translateY}%) `;
+          // console.log(`X: ${translateX} ${ Math.floor(gamma)} , Y: ${translateY} ${ Math.floor(beta)}, Orientation: ${window.matchMedia("(orientation: landscape)").matches} ${window.orientation}`);
+          document.querySelector('div#Container #Background').style.transform =
+            transformScale + transformTranslate;
+
+          document.querySelector(
+            'div.label'
+          ).textContent = `X: ${translateX} ${Math.floor(
+            gamma
+          )} , Y: ${translateY} ${Math.floor(beta)}, Orientation: ${
+            window.matchMedia('(orientation: landscape)').matches
+          } ${window.orientation}`;
+        },
+        false
+      );
     }
   },
   mouseMove: event => {
@@ -183,16 +240,59 @@ const ContainerFunction = {
       ContainerFunction.mm.target.y = event.clientY;
     }
   },
+  scrollInit: () => {
+    if (typeof window !== `undefined`) {
+      window.addEventListener('scroll', ContainerFunction.scrollEvent, {
+        passive: true
+      });
+    }
+  },
+  scrollEvent: () => {
+    document.body.classList.remove('onhover');
+    const scrollTop = document.documentElement.scrollTop;
+    const windowIH =  window.innerHeight;
+    const fullHeight =  document.body.clientHeight;
+
+    const scrollPercentage = scrollTop / (fullHeight - windowIH) ;
+
+    const transformScale = ` scale( 1, 1) `;
+    const maxY = (windowIH / fullHeight * 100 ) - 5;
+    let translateY = scrollPercentage * maxY;
+    const transformTranslate = ` translate( 0%, ${translateY}%) `;
+    document.querySelector('div#Container #Background').style.transform =
+      transformScale + transformTranslate;
+  },
   moveFunction: (_x, _y) => {
     const center = { X: window.innerWidth / 2, Y: window.innerHeight / 2 };
-    const MaxDistance = Math.sqrt(center.Y * center.Y + center.X * center.X);
-    let distance = Math.sqrt(
-      (_x - center.X) * (_x - center.X) + (_y - center.Y) * (_y - center.Y)
-    );
-    let scale = 1 + 0.25 * (Math.floor((distance / MaxDistance) * 10) / 10);
-    const drag = 0.25;
-    const translateX = ((_x - center.X) / center.X) * drag * 100;
-    const translateY = ((_y - center.Y) / center.Y) * drag * 100;
+    // const MaxDistance = Math.sqrt(center.Y * center.Y + center.X * center.X);
+    // let distance = Math.sqrt(
+    //   (_x - center.X) * (_x - center.X) + (_y - center.Y) * (_y - center.Y)
+    // );
+    // let scale = 1 + 0.25 * (Math.floor((distance / MaxDistance) * 10) / 10);
+
+    // GET MAX
+    const m = {
+      wW: window.innerWidth,
+      bW: document.querySelector('div#Container #Background').clientWidth,
+      wH: window.innerHeight,
+      bH: document.querySelector('div#Container #Background').clientHeight
+    };
+    const max = {
+      w: (m.wW / m.bW / 2) * 100 + 20,
+      h: (m.wH / m.bH / 2) * 100 + 20
+    };
+
+    let scale = 1;
+    const drag = 0.5;
+    let translateX = ((_x - center.X) / center.X) * drag * 100;
+    let translateY = ((_y - center.Y) / center.Y) * drag * 100;
+    // console.log('height', translateY, max.h);
+    if (Math.abs(translateX) > max.w) {
+      translateX = Math.sign(translateX) * max.w;
+    }
+    if (Math.abs(translateY) > max.h) {
+      translateY = Math.sign(translateY) * max.h;
+    }
     const transformScale = ` scale( ${scale}, ${scale}) `;
     const transformTranslate = ` translate( ${translateX}%, ${translateY}%) `;
     document.querySelector('div#Container #Background').style.transform =
