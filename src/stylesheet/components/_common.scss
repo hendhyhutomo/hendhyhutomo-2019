@@ -1,10 +1,12 @@
+$colorblack2: #303030;
+
 body {
   background: #202020;
   &.loading {
     pointer-events: none;
   }
   &:not(.onhover) {
-    background: #2d2d2d;
+    background: $colorblack2;
   }
 }
 * {
@@ -41,7 +43,10 @@ $p_desktop: 50px;
     margin-top: -$dimension / 2;
     transform-origin: center center;
     // background: #202020;
-    background-image: radial-gradient( rgba(0,0,0,1) 10%, rgba(0,0,0,0) 70%);
+    background-image: radial-gradient(
+      rgba(0, 0, 0, 1) 10%,
+      rgba(0, 0, 0, 0) 70%
+    );
     @include transform(translate(0%, 0%) scale(1, 1));
     body:not(.onhover) & {
       @include transform(translate(0%, 0%) scale(1, 1));
@@ -51,11 +56,15 @@ $p_desktop: 50px;
       bottom: 0%;
       left: 0%;
       margin: 0px;
-      background: #2d2d2d;
-      background-image: linear-gradient(200deg, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 75%);
+      background: $colorblack2;
+      background-image: linear-gradient(
+        200deg,
+        rgba(0, 0, 0, 1) 40%,
+        rgba(0, 0, 0, 0) 80%
+      );
     }
     body:not(.onhover).hasgyro & {
-      // background-image: radial-gradient(#000 05%, #2d2d2d 40%);
+      // background-image: radial-gradient(#000 05%, $colorblack2 40%);
       $dimension: 200vmax;
       width: $dimension;
       height: $dimension;
@@ -112,7 +121,7 @@ $p_desktop: 50px;
     }
     @include transition(color 0.25s, opacity 1.25s 0.5s);
     body:not(.onhover) & {
-      color: #2d2d2d;
+      color: $colorblack2;
     }
     body.loading & {
       opacity: 0;
@@ -142,7 +151,7 @@ $p_desktop: 50px;
           color: #fff;
         }
         body:not(.onhover) & {
-          color: #2d2d2d;
+          color: $colorblack2;
         }
       }
     }

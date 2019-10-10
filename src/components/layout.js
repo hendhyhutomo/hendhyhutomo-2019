@@ -31,7 +31,7 @@ export default class Layout extends React.Component {
             desc: '',
             keywords: '',
             image: '',
-            url: siteurl
+            url: siteurl,
           };
           return (
             <div id='Container'>
@@ -115,7 +115,7 @@ const ContainerFunction = {
       if (!ContainerFunction.resizeInit) {
         ContainerFunction.resizeInit = true;
         window.addEventListener('resize', ContainerFunction.resize, {
-          passive: true
+          passive: true,
         });
       }
     }
@@ -124,7 +124,7 @@ const ContainerFunction = {
     if (typeof window !== `undefined`) {
       ContainerFunction.resizeInit = false;
       window.removeEventListener('resize', ContainerFunction.resize, {
-        passive: true
+        passive: true,
       });
     }
   },
@@ -243,21 +243,21 @@ const ContainerFunction = {
   scrollInit: () => {
     if (typeof window !== `undefined`) {
       window.addEventListener('scroll', ContainerFunction.scrollEvent, {
-        passive: true
+        passive: true,
       });
     }
   },
   scrollEvent: () => {
     document.body.classList.remove('onhover');
     const scrollTop = document.documentElement.scrollTop;
-    const windowIH =  window.innerHeight;
-    const fullHeight =  document.body.clientHeight;
+    const windowIH = window.innerHeight;
+    const fullHeight = document.body.clientHeight;
 
-    const scrollPercentage = scrollTop / (fullHeight - windowIH) ;
+    const scrollPercentage = scrollTop / (fullHeight - windowIH);
 
     const transformScale = ` scale( 1, 1) `;
-    const maxY = (windowIH / fullHeight * 100 ) - 5;
-    let translateY = scrollPercentage * maxY;
+
+    let translateY = scrollPercentage * 50;
     const transformTranslate = ` translate( 0%, ${translateY}%) `;
     document.querySelector('div#Container #Background').style.transform =
       transformScale + transformTranslate;
@@ -275,12 +275,12 @@ const ContainerFunction = {
       wW: window.innerWidth,
       bW: document.querySelector('div#Container #Background').clientWidth,
       wH: window.innerHeight,
-      bH: document.querySelector('div#Container #Background').clientHeight
+      bH: document.querySelector('div#Container #Background').clientHeight,
     };
-    const max = {
-      w: (m.wW / m.bW / 2) * 100 + 20,
-      h: (m.wH / m.bH / 2) * 100 + 20
-    };
+    // const max = {
+    //   w: (m.wW / m.bW / 2) * 100 + 20,
+    //   h: (m.wH / m.bH / 2) * 100 + 20
+    // };
 
     let scale = 1;
     const drag = 0.5;
@@ -302,12 +302,12 @@ const ContainerFunction = {
   mm: {
     target: {
       x: 0,
-      y: 0
+      y: 0,
     },
     current: {
       x: 0,
-      y: 0
-    }
+      y: 0,
+    },
   },
   mouseMoveCalculate: () => {
     let moveX = 0,
@@ -360,7 +360,7 @@ const ContainerFunction = {
       if (!ContainerFunction.mouseMoveInit) {
         ContainerFunction.mouseMoveInit = true;
         window.addEventListener('mousemove', ContainerFunction.mouseMove, {
-          passive: true
+          passive: true,
         });
         if (ContainerFunction.mouseMoveInterval !== null)
           clearInterval(ContainerFunction.mouseMoveInterval);
@@ -375,10 +375,10 @@ const ContainerFunction = {
     if (typeof window !== `undefined`) {
       ContainerFunction.mouseMoveInit = false;
       window.removeEventListener('mousemove', ContainerFunction.mouseMove, {
-        passive: true
+        passive: true,
       });
       clearInterval(ContainerFunction.mouseMoveInterval);
       ContainerFunction.mouseMoveInterval = null;
     }
-  }
+  },
 };

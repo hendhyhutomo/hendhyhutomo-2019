@@ -42,7 +42,7 @@ export default () => {
           and&nbsp;many more&nbsp;—
         </p>
         <p>
-          Say hello, <wbr />
+          Say <wbr />
           <a
             href='mailto:hello@hendhyhutomo.com'
             target='_blank'
