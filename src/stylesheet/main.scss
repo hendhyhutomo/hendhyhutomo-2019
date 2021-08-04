@@ -1,16 +1,21 @@
 // BASE
-@import "base/mixin";
-@import "base/normalize";
-@import "base/variables";
-@import "base/typography";
+@import 'base/mixin';
+@import 'base/normalize';
+@import 'base/variables';
+@import 'base/typography';
 
 $colorblack2: #303030;
 // $fontcolor: #3D3D3D;
-$fontcolor: #484848;
+$fontcolor: #3f3f3f;
 // $fontcolor: #45463c;
 
 body {
   background: #212924;
+  background-image: linear-gradient(
+    135deg,
+    rgba(21, 29, 24, 1) 40%,
+    rgba(10, 15, 10, .75) 80%
+  );
   overscroll-behavior: none;
 
   &::-webkit-scrollbar {
@@ -53,11 +58,10 @@ $p_desktop: 50px;
     $dimension: 200vmax;
     width: $dimension;
     height: $dimension;
-    @include respond-to(tablet){
+    @include respond-to(tablet) {
       $dimension: 300vmax;
       width: $dimension;
       height: $dimension;
-
     }
     margin-left: -$dimension / 2;
     margin-top: -$dimension / 2;
@@ -112,7 +116,7 @@ $p_desktop: 50px;
     body.loading & {
       opacity: 0;
     }
-    & a{
+    & a {
       color: white;
     }
   }
