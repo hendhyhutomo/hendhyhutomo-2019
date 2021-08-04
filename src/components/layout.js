@@ -129,40 +129,40 @@ const ContainerFunction = {
     }
   },
   deviceMotion: () => {
-    function listener(event) {
-      if (typeof document !== `undefined`) {
-        document.body.classList.add('hasgyro');
-      }
-      let { gamma, beta } = event;
-      // gamma = gamma; // Y
-      // const radian = Math.atan2(beta, gamma);
-      // const deg = Math.floor((radian * 180 / Math.PI + 180) * 100) / 100;
-      // const transformRotate = ` rotate(${deg}deg) `;
+    // function listener(event) {
+    //   if (typeof document !== `undefined`) {
+    //     document.body.classList.add('hasgyro');
+    //   }
+    //   let { gamma, beta } = event;
+    //   // gamma = gamma; // Y
+    //   // const radian = Math.atan2(beta, gamma);
+    //   // const deg = Math.floor((radian * 180 / Math.PI + 180) * 100) / 100;
+    //   // const transformRotate = ` rotate(${deg}deg) `;
 
-      const MaxDistance = Math.sqrt(45 * 45 + 45 * 45);
-      let distance = Math.sqrt(gamma * gamma + beta * beta);
-      let scale = 1 + 0.25 * (Math.floor((distance / MaxDistance) * 10) / 10);
-      const transformScale = ` scale( ${scale}, ${scale}) `;
+    //   const MaxDistance = Math.sqrt(45 * 45 + 45 * 45);
+    //   let distance = Math.sqrt(gamma * gamma + beta * beta);
+    //   let scale = 1 + 0.25 * (Math.floor((distance / MaxDistance) * 10) / 10);
+    //   const transformScale = ` scale( ${scale}, ${scale}) `;
 
-      const drag = 0.75;
-      let translateX = -Math.floor((gamma / 180) * drag * 100);
-      let translateY = -Math.floor((beta / 180) * drag * 100);
+    //   const drag = 0.75;
+    //   let translateX = -Math.floor((gamma / 180) * drag * 100);
+    //   let translateY = -Math.floor((beta / 180) * drag * 100);
 
-      if (!window.matchMedia('(orientation: portrait)').matches) {
-        translateX = -Math.floor((beta / 180) * drag * 100);
-        if (window.orientation > 0) {
-          translateY = Math.floor((gamma / 180) * drag * 100);
-        } else {
-          translateY = -Math.floor((gamma / 180) * drag * 100);
-        }
-      }
-      translateX = translateX - 5;
-      translateY = translateY + 7.5;
-      const transformTranslate = ` translate( ${translateX}%, ${translateY}%) `;
-      // console.log(`X: ${translateX} ${ Math.floor(gamma)} , Y: ${translateY} ${ Math.floor(beta)}, Orientation: ${window.matchMedia("(orientation: landscape)").matches} ${window.orientation}`);
-      document.querySelector('div#Container #Background').style.transform =
-        transformScale + transformTranslate;
-    }
+    //   if (!window.matchMedia('(orientation: portrait)').matches) {
+    //     translateX = -Math.floor((beta / 180) * drag * 100);
+    //     if (window.orientation > 0) {
+    //       translateY = Math.floor((gamma / 180) * drag * 100);
+    //     } else {
+    //       translateY = -Math.floor((gamma / 180) * drag * 100);
+    //     }
+    //   }
+    //   translateX = translateX - 5;
+    //   translateY = translateY + 7.5;
+    //   const transformTranslate = ` translate( ${translateX}%, ${translateY}%) `;
+    //   // console.log(`X: ${translateX} ${ Math.floor(gamma)} , Y: ${translateY} ${ Math.floor(beta)}, Orientation: ${window.matchMedia("(orientation: landscape)").matches} ${window.orientation}`);
+    //   document.querySelector('div#Container #Background').style.transform =
+    //     transformScale + transformTranslate;
+    // }
 
     if (typeof window !== `undefined`) {
       if (window.DeviceOrientationEvent) {
@@ -271,12 +271,12 @@ const ContainerFunction = {
     // let scale = 1 + 0.25 * (Math.floor((distance / MaxDistance) * 10) / 10);
 
     // GET MAX
-    const m = {
-      wW: window.innerWidth,
-      bW: document.querySelector('div#Container #Background').clientWidth,
-      wH: window.innerHeight,
-      bH: document.querySelector('div#Container #Background').clientHeight,
-    };
+    // const m = {
+    //   wW: window.innerWidth,
+    //   bW: document.querySelector('div#Container #Background').clientWidth,
+    //   wH: window.innerHeight,
+    //   bH: document.querySelector('div#Container #Background').clientHeight,
+    // };
     // const max = {
     //   w: (m.wW / m.bW / 2) * 100 + 20,
     //   h: (m.wH / m.bH / 2) * 100 + 20

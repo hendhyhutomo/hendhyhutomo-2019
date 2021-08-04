@@ -1,24 +1,7 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import Transition from 'components/transition';
 
-const Layout = ({ children, location }) => (
-	<StaticQuery
-		query={graphql`
-			query SiteTitleQuery {
-				site {
-					siteMetadata {
-						title
-					}
-				}
-			}
-		`}
-		render={(data) => (
-			<div id="MainLayout">
-				<Transition location={location}>{children}</Transition>
-			</div>
-		)}
-	/>
+const Layout = ({ children }) => (
+  <div id='MainLayout'>{children}</div>
 );
 
 export default Layout;
