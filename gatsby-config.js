@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Coming Soon | Hendhy Hutomo `,
+    title: `Hendhy Hutomo | hello@hendhyhutomo.com`,
     siteUrl: `https://hendhyhutomo.com`,
   },
   plugins: [
